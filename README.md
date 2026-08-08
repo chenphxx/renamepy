@@ -1,9 +1,25 @@
-## 关于项目
+# renamepy
 
-#### 简介
+## 关于
 
-用于批量更新文件夹内的所有或某一些文件名称, 减去手动重命名的繁琐操作, 目前支持按照固定前缀以及自增的后缀来重命名文件, 后续可能会增加其他的规则; 使用方法非常简单, 相信你进入软件后就能弄明白该怎么操作 
+一款用于重命名文件夹内的文件的脚本软件 
 
-#### 其他
+1. 点击「选择文件夹」添加文件, 可用「筛选」只看特定扩展名 
+2. 填写文件名前缀与起始数字, 点击「开始处理」
+3. 保存位置选原文件夹 = 原地重命名; 选其他文件夹 = 复制并改名 
+4. 点击文件列表中的文件, 可在下方预览内容 
 
-暂无固定的更新计划, 如果我在是用的过程中遇到了问题, 可能会更新一些新的功能和特性 
+## 依赖库
+
+- Python 3.8+（仅标准库即可运行）
+- Pillow: 图片预览（`pip install pillow`）
+- openpyxl: Excel 表格预览（`pip install openpyxl`）
+- PyInstaller: 打包（`pip install pyinstaller`）
+
+## 打包命令
+
+```bash
+pyinstaller --noconfirm --clean renamepy.spec
+# 或
+pyinstaller --onefile --noconsole --name renamepy main.py
+```
