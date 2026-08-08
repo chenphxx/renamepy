@@ -6,7 +6,7 @@ __pycache__/
 build/
 dist/
 *.manifest
-rename_*.spec
+renamepy.spec
 
 # 虚拟环境
 .venv/
