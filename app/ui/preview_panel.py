@@ -3,7 +3,7 @@
 import csv
 import os
 import tkinter as tk
-from tkinter import ttk
+from tkinter import messagebox, ttk
 
 from ..constants import (
     IMAGE_EXTS,
@@ -14,6 +14,7 @@ from ..constants import (
     TABLE_EXTS,
     TEXT_EXTS,
 )
+from ..file_ops import open_file
 
 
 class PreviewPanel(ttk.Frame):
@@ -113,7 +114,19 @@ class PreviewPanel(ttk.Frame):
             self._try_text_fallback(path, "图片加载失败")
             return
         self._clear_body()
-        tk.Label(self.body, image=self._preview_img, bg=p["bg"]).pack(padx=8, pady=6)
+        label = tk.Label(self.body, image=self._preview_img, bg=p["bg"])
+        label.pack(padx=8, pady=6)
+        # 双击图片用系统默认程序打开
+        label.bind("<Double-1>", lambda e: self._open_preview_file(path))
+        current = self.lbl_info.cget("text")
+        if "双击打开" not in current:
+            self.lbl_info.config(text=f"{current} · 双击打开")
+
+    def _open_preview_file(self, path):
+        try:
+            open_file(path)
+        except Exception as e:
+            messagebox.showerror("错误", f"无法打开文件: {e}")
 
     def _preview_text(self, path):
         try:
