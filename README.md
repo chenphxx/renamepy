@@ -19,7 +19,5 @@
 ## 打包命令
 
 ```bash
-pyinstaller --noconfirm --clean renamepy.spec
-# 或
 pyinstaller --onefile --noconsole --name renamepy main.py
 ```
