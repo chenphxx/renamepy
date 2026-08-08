@@ -1,9 +1,8 @@
-# -*- coding: utf-8 -*-
-"""程序入口：启动批量重命名工具。"""
+"""renamepy - 批量文件重命名工具 入口文件。"""
 
 import tkinter as tk
 
-from rename_app import RenameApp
+from app.ui.main_window import RenameApp
 
 
 def main():
